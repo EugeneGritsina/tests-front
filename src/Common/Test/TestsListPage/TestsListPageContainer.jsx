@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { DataGrid } from '@material-ui/data-grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import * as Actions from './Actions.js';
 import * as Selectors from './Selectors.js';
@@ -24,7 +25,6 @@ const columns = [
 
 
 class TestListPageContainer extends Component {
-
   componentDidMount() {
     const { getTests } = this.props;
     getTests();
@@ -32,11 +32,16 @@ class TestListPageContainer extends Component {
 
   render() {
     const { tests } = this.props;
-    return (
-      <div style={{ height: 700, width: 1200 }}>
-          <DataGrid rows={tests} columns={columns} pageSize={20} />
-      </div>
-    );
+
+    if(!tests.length) {
+      return(<CircularProgress />);
+    } else {
+      return (
+        <div style={{ height: 700, width: 1200 }}>
+            <DataGrid rows={tests} columns={columns} pageSize={20} />
+        </div>
+      );
+    }
   };
 }
 
@@ -51,6 +56,5 @@ const mapDispatchToProps = (dispatch) => {
     getTests: Actions.getTests(dispatch)
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TestListPageContainer);
