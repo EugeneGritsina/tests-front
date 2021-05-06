@@ -26,8 +26,8 @@ const columns = [
 class TestListPageContainer extends Component {
 
   componentDidMount() {
-    const { getTests, dispatch} = this.props;
-    getTests()(dispatch);
+    const { getTests } = this.props;
+    getTests();
   }
 
   render() {
@@ -40,7 +40,6 @@ class TestListPageContainer extends Component {
   };
 }
 
-
 const mapStateToProps = (state, ownProps) => {
   return {
     tests: Selectors.getTests(state)
@@ -49,8 +48,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatch: dispatch,
-    getTests: Actions.getTests
+    getTests: Actions.getTests(dispatch)
   }
 }
 
