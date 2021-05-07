@@ -1,15 +1,20 @@
 import React from 'react';
+import {Button} from '@material-ui/core';
 
-import { Button } from '@material-ui/core/';
+const TestPageContainer = (props) => {
+    const { match, history } = props;
+    const id = match.params.id;
 
-export default TestPageContainer = () => {
-    
+    const goBackward = () => {
+        history.goBack();
+    }
+
     return (
         <div>
-            TestPageContainer
-            <Button>
-                Назад
-            </Button>
+            <Button onClick={goBackward}>Назад</Button>
+            <h1>Test {id}</h1> 
         </div>
     );
 }
+
+export default TestPageContainer;

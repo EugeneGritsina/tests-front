@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
+
 import { DataGrid } from '@material-ui/data-grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -30,6 +32,11 @@ class TestListPageContainer extends Component {
     getTests();
   }
 
+  redirectToSelectedTest = (id) => {
+    const { location, history } = this.props;
+    history.push(`${location.pathname}/${id}`);
+  }
+
   render() {
     const { tests } = this.props;
 
@@ -38,7 +45,13 @@ class TestListPageContainer extends Component {
     } else {
       return (
         <div style={{ height: 700, width: 1200 }}>
-            <DataGrid rows={tests} columns={columns} pageSize={20} />
+            <DataGrid 
+              rows={tests} 
+              columns={columns} 
+              pageSize={20}
+              disableSelectionOnClick
+              onRowClick={(event)=>{ this.redirectToSelectedTest(event.id) }}
+            />
         </div>
       );
     }
@@ -57,4 +70,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestListPageContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TestListPageContainer));
