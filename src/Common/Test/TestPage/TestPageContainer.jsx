@@ -1,20 +1,49 @@
-import React from 'react';
-import {Button} from '@material-ui/core';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import {Button, CircularProgress } from '@material-ui/core';
 
-const TestPageContainer = (props) => {
-    const { match, history } = props;
-    const id = match.params.id;
+import * as Actions from './TestActions.js';
+import * as Selectors from './TestSelectors.js';
 
-    const goBackward = () => {
-        history.goBack();
+class TestPageContainer extends Component {
+
+    componentDidMount() {
+        const { match, getTest } = this.props;
+        const id = match.params.id;
+        getTest(id);
     }
 
-    return (
-        <div>
-            <Button onClick={goBackward}>Назад</Button>
-            <h1>Test {id}</h1> 
-        </div>
-    );
+    componentWillUnmount(){
+        const { clearState } = this.props;
+        clearState();
+    }
+
+    render () {
+        const { history, test } = this.props;
+        
+        if(!test) return(<CircularProgress />);
+
+        return (
+            <div>
+                <Button onClick={history.goBack}>Назад</Button>
+                <h1>Test {test.id}</h1> 
+            </div>
+        );
+    }
 }
 
-export default TestPageContainer;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        test: Selectors.getTest(state)
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getTest: Actions.getTest(dispatch),
+        clearState: Actions.clearState(dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestPageContainer);

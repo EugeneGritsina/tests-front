@@ -52,12 +52,11 @@ export class AjaxProxy {
     // })
 
     fetchRequest = (path, type, data, isAsync = true) => {
-        //EventBus.trigger(FieldEvents.AjaxAccomplishes, true);
         return $.ajax({
             type,
             async: isAsync,
             url: this.apiAddress + (!path ? '' : `/${path}`),
-            data: data ? JSON.stringify(data) : {},
+            data: data ? type === HTTP_METHODS.GET ? data : JSON.stringify(data) : null,
             datatype: 'json',
             contentType: 'application/json',
             crossDomain: true,    
@@ -76,8 +75,9 @@ export class ProxyFactory {
 
 class TestsProxy {
     constructor() {
-        this.proxy = ProxyFactory.CreateTestsProxy("");
+        this.proxy = ProxyFactory.CreateTestsProxy('');
         this.getTests = () => this.proxy.sendGet();
+        this.getTest = (id) => this.proxy.sendGet(id);
     }
 }
 

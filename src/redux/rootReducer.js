@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux';
 
-import testReducer from '../Common/Test/TestsListPage/Reducer.js';
+import testsListReducer from '../Common/Test/TestsListPage/Reducer.js';
+import testReducer from '../Common/Test/TestPage/TestReducer.js';
 
 const rootReducer = combineReducers({
-    testsListPage: testReducer,
+    testsListPage: testsListReducer,
+    testPage: testReducer,
+    
 });
 
 export default rootReducer;

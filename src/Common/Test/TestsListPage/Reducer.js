@@ -4,7 +4,7 @@ let defaultState = {
 
 // local actions
 export const types = {
-    TESTS_FETCHED: 'TESTS_FETCHED'
+    TESTS_FETCHED: 'TESTS_FETCHED',
 };
 
 
