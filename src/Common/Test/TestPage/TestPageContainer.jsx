@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {Button, CircularProgress } from '@material-ui/core';
+import { Button, Typography, Divider, Paper, CircularProgress } from '@material-ui/core';
 
 import * as Actions from './TestActions.js';
 import * as Selectors from './TestSelectors.js';
@@ -24,10 +24,33 @@ class TestPageContainer extends Component {
         if(!test) return(<CircularProgress />);
 
         return (
-            <div>
+            <>
                 <Button onClick={history.goBack}>Назад</Button>
-                <h1>Test {test.id}</h1> 
-            </div>
+                <Paper elevation={3}>
+                    <h1>Название теста: {test.name}</h1>
+                    <Divider />
+                    <Typography>Предмет: {test.subjectDTO.name}</Typography>
+                    <Divider /> 
+                    <Typography>Количество вопросов, отображаемое студенту: {test.questionsAmount}</Typography>
+                    <Divider /> 
+                    <Typography>Время прохождения теста: {test.estimatedTime ? test.estimatedTime : "Не задано"}</Typography>
+                    <Divider /> 
+                    <Typography>Доступ к тесту: {test.isOpen ? "Открыт" : "Закрыт"}</Typography>
+                    <Divider /> 
+                </Paper>
+                {test.questions.map(question => {
+                    return (
+                        <Paper elevation={3} key={question.id}>
+                            <h2>Вопрос: {question.description}</h2>
+                            <Divider /> 
+                            <Typography>Тип вопроса: {question.questionType.type}</Typography>
+                            <Divider /> 
+                            <Typography>Количество баллов: {question.points}</Typography>
+                            <Divider /> 
+                        </Paper>
+                    )
+                })}
+            </>
         );
     }
 }

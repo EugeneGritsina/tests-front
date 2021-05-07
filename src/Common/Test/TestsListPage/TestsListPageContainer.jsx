@@ -44,7 +44,7 @@ class TestListPageContainer extends Component {
       return(<CircularProgress />);
     } else {
       return (
-        <div style={{ height: 700, width: 1200 }}>
+        <div style={{ height: 700, width: 1300 }}>
             <DataGrid 
               rows={tests} 
               columns={columns} 
