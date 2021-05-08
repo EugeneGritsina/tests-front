@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import testsListReducer from '../Common/Test/TestsListPage/Reducer.js';
-import testReducer from '../Common/Test/TestPage/TestReducer.js';
+import testsListReducer from '../Pages/Test/TestsListPage/Reducer.js';
+import testReducer from '../Pages/Test/TestPage/TestReducer.js';
 
 const rootReducer = combineReducers({
     testsListPage: testsListReducer,

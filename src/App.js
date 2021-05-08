@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AppBar, Toolbar, makeStyles, Typography } from '@material-ui/core/';
 
 import './App.css';
-import TestListPage from './Common/Test/TestsListPage/TestsListPageContainer';
-import TestPage from './Common/Test/TestPage/TestPageContainer.jsx';
-import LoginPage from './Common/LoginPage/LoginPage';
+import TestListPage from './Pages/Test/TestsListPage/TestsListPageContainer';
+import TestPage from './Pages/Test/TestPage/TestPageContainer.jsx';
+import LoginPage from './Pages/LoginPage/LoginPage';
 
 const useStyles = makeStyles({
   header: {
@@ -13,11 +13,11 @@ const useStyles = makeStyles({
 });
 
 const isHeaderToolbarMustBeShowed = () => {
-  debugger;
-  if (!window.location.pathname)
+  if (window.location.pathname === "/") {
     return false;
-  else 
+  } else {
     return true;
+  }
 }
 
 function App() {

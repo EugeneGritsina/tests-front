@@ -4,7 +4,13 @@ import { withRouter } from 'react-router';
 import './LoginPage.scss';
 import './LoginPage.css';
 
-function LoginPage() {
+function LoginPage(props) {
+
+    const redirectToTestsPage = () => {
+        const { history } = props;
+        history.push("/tests");
+    }
+
     return (
         <>
             <div className="app__main-container">
@@ -29,7 +35,7 @@ function LoginPage() {
                 <button 
                     type="submit" 
                     className="app__loginform-button-sign-in" 
-                    /*(click)="sendLoginData()"*/>
+                    onClick={redirectToTestsPage}>
                     Войти
                 </button>
                 <div className="checker-box">
