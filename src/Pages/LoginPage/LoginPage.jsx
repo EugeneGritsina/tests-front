@@ -1,13 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import { useDispatch } from 'react-redux';
+
 
 import './LoginPage.scss';
 import './LoginPage.css';
+import * as SharedActions from '../../redux/SharedActions.js';
 
 function LoginPage(props) {
-
+    const dispatch = useDispatch();
     const redirectToTestsPage = () => {
         const { history } = props;
+        dispatch(SharedActions.showHeader());
         history.push("/tests");
     }
 
