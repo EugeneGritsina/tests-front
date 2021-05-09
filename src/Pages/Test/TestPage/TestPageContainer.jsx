@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Button, Typography, Divider, Paper, CircularProgress } from '@material-ui/core';
+import { Button, Typography, Divider, Paper, Grid } from '@material-ui/core';
 
+import Loader from '../../../Components/Loader/Loader.jsx';
 import * as Actions from './TestActions.js';
 import * as Selectors from './TestSelectors.js';
 
@@ -21,10 +22,17 @@ class TestPageContainer extends Component {
     render () {
         const { history, test } = this.props;
         
-        if(!test) return(<CircularProgress />);
+        if(!test) return(<Loader />);
 
         return (
-            <>
+            <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ minHeight: '10vh' }}
+            >
                 <Button onClick={history.goBack}>Назад</Button>
                 <Paper elevation={3}>
                     <h1>Название теста: {test.name}</h1>
@@ -50,7 +58,7 @@ class TestPageContainer extends Component {
                         </Paper>
                     )
                 })}
-            </>
+            </Grid>
         );
     }
 }

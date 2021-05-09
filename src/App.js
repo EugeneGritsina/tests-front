@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { AppBar, Toolbar, makeStyles, Typography, Button } from '@material-ui/core/';
+import { AppBar, Toolbar, makeStyles, Button } from '@material-ui/core/';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './App.css';

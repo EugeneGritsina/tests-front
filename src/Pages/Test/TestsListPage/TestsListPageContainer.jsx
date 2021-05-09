@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
 import { DataGrid } from '@material-ui/data-grid';
-import { Paper, CircularProgress, Grid  } from '@material-ui/core';
+import { Paper, Grid } from '@material-ui/core';
 
 
+import Loader from '../../../Components/Loader/Loader.jsx';
 import * as Actions from './Actions.js';
 import * as Selectors from './Selectors.js';
 
@@ -41,7 +42,7 @@ class TestListPageContainer extends Component {
   render() {
     const { tests } = this.props;
     if(!tests.length) {
-      return(<CircularProgress />);
+      return(<Loader />);
     } else {
       return (
         <Grid
