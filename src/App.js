@@ -13,7 +13,7 @@ import * as SharedSelectors from './redux/SharedSelectors.js';
 const useStyles = makeStyles({
   header: {
       background: "#08105A",
-      height: '80px',
+      height: '10vh',
   },
 });
 

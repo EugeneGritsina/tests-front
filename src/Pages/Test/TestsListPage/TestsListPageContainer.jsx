@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { DataGrid } from '@material-ui/data-grid';
 import { Paper, Grid } from '@material-ui/core';
 
-
+import './TestsList.scss';
 import Loader from '../../../Components/Loader/Loader.jsx';
 import * as Actions from './Actions.js';
 import * as Selectors from './Selectors.js';
@@ -51,8 +51,9 @@ class TestListPageContainer extends Component {
           direction="column"
           alignItems="center"
           justify="center"
-          style={{ minHeight: '80vh' }}
-          >
+          style={{ minHeight: '90vh' }}
+          className='wrapper'
+        >
           <Paper style={{ height: 700, width: 1300 }}>
               <DataGrid 
                 rows={tests} 
