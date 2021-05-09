@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
 import { DataGrid } from '@material-ui/data-grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Paper, CircularProgress, Grid  } from '@material-ui/core';
+
 
 import * as Actions from './Actions.js';
 import * as Selectors from './Selectors.js';
@@ -39,20 +40,28 @@ class TestListPageContainer extends Component {
 
   render() {
     const { tests } = this.props;
-
     if(!tests.length) {
       return(<CircularProgress />);
     } else {
       return (
-        <div style={{ height: 700, width: 1300 }}>
-            <DataGrid 
-              rows={tests} 
-              columns={columns} 
-              pageSize={20}
-              disableSelectionOnClick
-              onRowClick={(event)=>{ this.redirectToSelectedTest(event.id) }}
-            />
-        </div>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '80vh' }}
+          >
+          <Paper style={{ height: 700, width: 1300 }}>
+              <DataGrid 
+                rows={tests} 
+                columns={columns} 
+                pageSize={20}
+                disableSelectionOnClick
+                onRowClick={(event)=>{ this.redirectToSelectedTest(event.id) }}
+              />
+          </Paper>
+        </Grid>
       );
     }
   };
