@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 
 
 import './LoginPage.scss';
 import './LoginPage.css';
 import * as SharedActions from '../../redux/SharedActions.js';
+import TitleOfOrganization from '../../Components/TitleOfOrganization/TitleOfOrganization';
 
 function LoginPage(props) {
     const dispatch = useDispatch();
+    
+    dispatch(SharedActions.hideHeader());
+
     const redirectToTestsPage = () => {
         const { history } = props;
         dispatch(SharedActions.showHeader());
@@ -20,7 +24,7 @@ function LoginPage(props) {
             <div className="app__main-container">
                 <div className="app__login-image"/>
             </div>
-            <div className="app__bsu">БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ</div>
+            <TitleOfOrganization />
             <form className="app__loginform" /*[formGroup]="loginForm"*/>
                 <div className="enter-label">Вход</div>
                 <input 

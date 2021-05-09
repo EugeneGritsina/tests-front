@@ -1,0 +1,14 @@
+.title__organization {
+    /* position: absolute; */
+    width: 252px;
+    height: 39px;
+    left: 123px;
+    top: 40px;
+    font-family: Montserrat;
+    font-style: revert;
+    font-weight: 50px;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+}

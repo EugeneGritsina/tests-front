@@ -1,5 +1,5 @@
 let defaultState = {
-    isHeaderShowed: false
+    isHeaderShowed: true
 }
 
 export const types = {

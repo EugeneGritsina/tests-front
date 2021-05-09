@@ -6,12 +6,14 @@ import './App.css';
 import TestListPage from './Pages/Test/TestsListPage/TestsListPageContainer';
 import TestPage from './Pages/Test/TestPage/TestPageContainer.jsx';
 import LoginPage from './Pages/LoginPage/LoginPage';
+import TitleOfOrganization from './Components/TitleOfOrganization/TitleOfOrganization';
 import * as SharedActions from './redux/SharedActions.js';
 import * as SharedSelectors from './redux/SharedSelectors.js';
 
 const useStyles = makeStyles({
   header: {
-      color: "red"
+      background: "#08105A",
+      height: '80px',
   },
 });
 
@@ -25,9 +27,9 @@ function App() {
     <Router>
       <div className="App">
         { isHeaderShowed ? 
-        <AppBar position="static">
+        <AppBar position="static" className={styles.header}>
           <Toolbar>
-            <Typography className={styles.header}>Белорусский государственный университет</Typography>          
+          <TitleOfOrganization />
             <Link to="/tests">Список тестов</Link>
             <Button onClick={() => dispatch(SharedActions.hideHeader())}><Link to="/">Выйти</Link></Button>
           </Toolbar>
