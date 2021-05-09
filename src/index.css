@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page-wrapper {
+  background-image: url('./img/tests_list_background.jpg');
+  min-height: 90vh;
+}
